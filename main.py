@@ -40,22 +40,36 @@ adlabel.pack()
 def ext():
     app.destroy()
 
+
 #Default Prompts
 title=Label(Tit,text="ID-Generator",font=('Helvetica', 30),bg="#bbe4e9")
 subtitle=Label(subti,text="Login",font=('Helvetica', 25),bg="#bbe4e9")
 title.place(x=150,y=6)
 subtitle.place(x=200,y=5)
 
+def checkfld():
+    username=user1.get()
+    password=pass1.get()
+    if username !='':
+        if password!='' and len(password)>7:
+            messagebox.showinfo("Stage 1 check",f"Hi {username} Login page will now exit")
+        else:
+            messagebox.showwarning("Password error","Password must contain more than 7 characters")
+    else:
+        messagebox.showwarning("Warning!","Username must not be blank")
+
 #Default entries
 crtr=Label(creator,text="|||| Created By - Sarjak Bhandari ||||",font=('Helvetica', 20),bg="#bbe4e9")
 usrnmr_=Label(Mfrm,text="Username:",font=('Helvetica', 25),bg="#53a8b6")
 pss_=Label(Mfrm,text="Password:",font=('Helvetica', 25),bg="#53a8b6")
-Bttn=Button(Mfrm,text="Login",bg="#ececec",height=1,width=10,font=('Helvetica', 20))
+Bttn=Button(Mfrm,text="Login",bg="#ececec",height=1,width=10,font=('Helvetica', 20),command=checkfld)
 Bttn2=Button(Mfrm,text="Register",bg="#ececec",height=1,width=10,font=('Helvetica', 20))
 Button(main,text="Exit",command=ext,font=('Helvetica', 20),bg="#bbe4e9",width=30,height=1).place(x=455,y=380)
 #inputs
 global username
 global password
+
+
 
 user1=Entry(Mfrm,font=('Helvetica', 20))
 pass1=Entry(Mfrm,font=('Helvetica', 20))
