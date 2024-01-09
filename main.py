@@ -14,6 +14,9 @@ app.title("ID generator")
 app.iconbitmap("assets/main.ico")
 app.geometry("1000x500")
 app.resizable(False,False)
+
+
+#login frame
 main=Frame(app,width=1000,height=500)
 main.config(bg="#5585b5")
 main.place(x=0,y=0)
@@ -58,12 +61,24 @@ def checkfld():
     else:
         messagebox.showwarning("Warning!","Username must not be blank")
 
+def reg():
+    def regst():
+        messagebox.showinfo("Registration complete")
+    def lg():
+        subtitle.config(text="Login")
+        Bttn2.config(text="Register", command=reg, bg="Black")
+        Bttn.config(text="Login",command=checkfld)
+    subtitle.config(text="Register")
+    Bttn.config(text="Register", command=regst)
+    Bttn2.config(text="Login",command=lg)
+
+
 #Default entries
 crtr=Label(creator,text="|||| Created By - Sarjak Bhandari ||||",font=('Helvetica', 20),bg="#bbe4e9")
 usrnmr_=Label(Mfrm,text="Username:",font=('Helvetica', 25),bg="#53a8b6")
 pss_=Label(Mfrm,text="Password:",font=('Helvetica', 25),bg="#53a8b6")
 Bttn=Button(Mfrm,text="Login",bg="#ececec",height=1,width=10,font=('Helvetica', 20),command=checkfld)
-Bttn2=Button(Mfrm,text="Register",bg="#ececec",height=1,width=10,font=('Helvetica', 20))
+Bttn2=Button(Mfrm,text="Register",bg="#ececec",height=1,width=10,font=('Helvetica', 20),command=reg)
 Button(main,text="Exit",command=ext,font=('Helvetica', 20),bg="#bbe4e9",width=30,height=1).place(x=455,y=380)
 #inputs
 global username
