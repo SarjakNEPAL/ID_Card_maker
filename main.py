@@ -5,11 +5,17 @@ from tkinter import filedialog
 from PIL import ImageTk, Image
 import sqlite3
 
+link= sqlite3.connect("Database.db")
+cursor=link.cursor()
+global app
 
 def scene1():
-    link= sqlite3.connect("Database.db")
-    cursor=link.cursor()
-
+    global app
+    app=tk.Tk()
+    app.title("ID generator")
+    app.iconbitmap("assets/main.ico")
+    app.geometry("1000x500")
+    app.resizable(False,False)
     cursor.execute('''
             CREATE TABLE IF NOT EXISTS users (
                 username TEXT NOT NULL PRIMARY KEY,
@@ -39,14 +45,6 @@ def scene1():
         return re
 
 
-
-
-    app=tk.Tk()
-    app.title("ID generator")
-    app.iconbitmap("assets/main.ico")
-    app.geometry("1000x500")
-    app.resizable(False,False)
-
     def lg():
         subtitle.config(text="Login")
         Bttn2.config(text="Register", command=reg)
@@ -57,7 +55,7 @@ def scene1():
         print(a)
         if a[0]==p:
             print("Loggedin")
-            app.destroy()
+            scene2(TRUE,u)
         else:
             messagebox.showerror("CREDENTIAL ERROR","Username or Password error")
         pass1.delete(0,END)
@@ -143,7 +141,7 @@ def scene1():
     Button(main,text="Exit",command=ext,font=('Helvetica', 20),bg="#bbe4e9",width=30,height=1).place(x=455,y=380)
     #inputs
     user1=Entry(Mfrm,font=('Helvetica', 20))
-    pass1=Entry(Mfrm,font=('Helvetica', 20))
+    pass1=Entry(Mfrm,font=('Helvetica', 20),show="*")
     crtr.place(x=40,y=5)
     usrnmr_.place(x=20,y=10)
     pss_.place(x=20,y=70)
@@ -154,10 +152,24 @@ def scene1():
     #login function
     app.mainloop()
 
-def scene2():
+def scene2(a,usrnm):
     '''
         This scene will open a dashboard that will show saved ID card and create new id button
     '''
+    global app
+    app.destroy()
+    if a==True:
+        app=Tk()
+        app.geometry('360x240')
+        app.title('Dashboard')
+        app.resizable(False,False)
+        main=Frame(app,)
+    
+    else:
+        messagebox.showerror("Session error","Please Login before Using the App")
+        
+
+
 
 def scene3():
     '''
