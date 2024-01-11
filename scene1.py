@@ -8,37 +8,42 @@ from condata import *
 global app
 app=tk.Tk()
 
-def render(kkggv):
 
-    global isok, app
+
+
+
+def render(kkggv):
+    global isok, app, username
     isok=False
     if kkggv == True:
-
         app.title("ID generator")
         app.iconbitmap("assets/main.ico") 
         app.geometry("1000x500")
         app.resizable(False,False)
-        def dataget(a):
-            username=user1.get()
-            if a==("p"):
-                cursor.execute('SELECT password FROM users WHERE username=?',[username])
+
+        def dataget():
+            global username
+            username=user1.get()                
+            cursor.execute('SELECT password FROM users WHERE username=?',[username])
             re=cursor.fetchone()
             return re
-
-
+            
         def lg():
             subtitle.config(text="Login")
             Bttn2.config(text="Register", command=reg)
             Bttn.config(text="Login",command=checkfld)
 
         def lgmn(u,p):
-            a=dataget("p")
-            if a[0]==p or a[0] != NONE:
-                global isok
+            global isok
+            isok=False
+            a=dataget()
+            if a[0]==p and p!=None:
+                print(a)
                 isok=True
                 app.destroy()
             else:
                 messagebox.showerror("CREDENTIAL ERROR","Username or Password error")
+                isok=False
             pass1.delete(0,END)
 
         def signup():
@@ -97,6 +102,7 @@ def render(kkggv):
         subtitle.place(x=200,y=5)
 
         def checkfld():
+            global username
             username=user1.get()
             password=pass1.get()
             if username !='':
@@ -134,10 +140,13 @@ def render(kkggv):
         pass1.place(x=185,y=75)
         #login function
         app.mainloop()
-    elif isok==False and kkggv==False:
+    elif isok==False or kkggv==False:
         app=Tk()
         app.destroy()
     return isok
+
+def getuname():
+    return username
 
     
     

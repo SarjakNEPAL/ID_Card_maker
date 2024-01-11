@@ -1,7 +1,10 @@
-import scene1 as scene1
+import scene1 
+import scene2
 
 def Login(a):
     if scene1.render(a):
-        print("Success")
+        scene2.start(scene1.getuname())
+
+        
     
 

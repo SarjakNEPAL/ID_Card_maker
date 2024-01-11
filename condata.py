@@ -12,6 +12,7 @@ cursor.execute('''
 cursor.execute('''
             CREATE TABLE IF NOT EXISTS user_info (
                 username TEXT NOT NULL,
+                Fname TEXT,
                 gender TEXT NOT NULL,
                 phone INTEGER NOT NULL UNIQUE,
                 address TEXT,
