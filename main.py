@@ -163,8 +163,7 @@ def scene2(a,usrnm):
         app.geometry('360x240')
         app.title('Dashboard')
         app.resizable(False,False)
-        main=Frame(app,)
-    
+        
     else:
         messagebox.showerror("Session error","Please Login before Using the App")
         
