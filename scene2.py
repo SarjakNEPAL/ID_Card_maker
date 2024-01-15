@@ -7,9 +7,11 @@ def start(a):
     global con 
     
     def ext():
+        link.close()
         app.destroy()
            
     def logout():
+        link.close()
         global con
         con='Logout'
         ext()
@@ -51,3 +53,5 @@ def start(a):
     app.mainloop()
     return con
 
+if __name__ == "__main__":
+    start('sar')

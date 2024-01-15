@@ -19,3 +19,10 @@ cursor.execute('''
                 company TEXT
             )      
     ''')
+
+cursor.execute('''
+            CREATE TABLE IF NOT EXISTS user_img (
+                username TEXT NOT NULL PRIMARY KEY,
+                Image BLOB
+            );
+''')

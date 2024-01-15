@@ -99,6 +99,7 @@ def render(kkggv):
         #exit func
         def ext():
             app.destroy()
+            link.close()
 
 
         #Default Prompts
