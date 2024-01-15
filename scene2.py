@@ -5,14 +5,17 @@ global con
 con=""
 def start(a):
     global con 
-    app=Tk()
+    
     def ext():
         app.destroy()
            
     def logout():
+        global con
         con='Logout'
-        return con
+        ext()
     
+    
+    app=Tk()
     global data 
     data=a
     app.title("ID generator")
@@ -38,7 +41,7 @@ def start(a):
     b.place(x=5,y=400)
     b1=Button(frame21,text="Settings",height=4, width=36,bg="#BFC9CA")
     b1.place(x=10,y=10)
-    b2=Button(frame21,text="Logout",height=4, width=36,bg="#BFC9CA",)
+    b2=Button(frame21,text="Logout",height=4, width=36,bg="#BFC9CA",command=logout)
     b2.place(x=10,y=100)
      #labels
     k=Label(frame22,text=f"User: {a}",bg="#BFC9CA",font=("Small Font",25))
@@ -46,5 +49,5 @@ def start(a):
     k1=Label(frame23,text="DASHBOARD",bg="#BFC9CA",font=("Small Font",25))
     k1.place(x=23,y=5)
     app.mainloop()
-    print(con)
+    return con
 
