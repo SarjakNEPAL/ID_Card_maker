@@ -22,7 +22,7 @@ def start(a):
     def logout():
         global con
         con='Logout'
-        ext()
+        app2.destroy()
     
     
 
