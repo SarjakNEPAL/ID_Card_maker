@@ -6,15 +6,12 @@ from tkinter import filedialog
 from PIL import Image, ImageTk
 from condata import *
 
-global app
-app=tk.Tk()
-
-
 global username
 global password
 
 def render(kkggv):
     global isok, app, username
+    app=tk.Tk()
     isok=False
     if kkggv == True:
         app.title("ID generator")
