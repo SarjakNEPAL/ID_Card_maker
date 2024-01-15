@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 from tkinter import *
 from tkinter import messagebox
 from tkinter import filedialog
@@ -16,7 +17,6 @@ def render(kkggv):
     global isok, app, username
     isok=False
     if kkggv == True:
-        app=Tk()
         app.title("ID generator")
         app.iconbitmap("assets/main.ico") 
         app.geometry("1000x500")
@@ -87,10 +87,17 @@ def render(kkggv):
         creator.place(x=450,y=440)
 
         #imagings
-        Ad_img=Image.open("assets/id-card.png")
-        ad_pic=ImageTk.PhotoImage(Ad_img.resize((400, 440)))
-        adlabel=Label(Ad,image=ad_pic,bg="#79c2d0")
+        # Open the image
+        image_path = 'assets/id-card.png'  # Provide the correct path to your image
+        Ad_img = Image.open(image_path)
+
+        # Create a PhotoImage object
+        ad_pic = ImageTk.PhotoImage(Ad_img.resize((400, 440)))
+
+        # Display the image on a label
+        adlabel = ttk.Label(Ad, image=ad_pic, background='#79c2d0')
         adlabel.pack()
+
 
         #exit func
         def ext():
