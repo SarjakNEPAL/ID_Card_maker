@@ -20,7 +20,6 @@ def start(a):
         app2.destroy()
            
     def logout():
-        link.close()
         global con
         con='Logout'
         ext()
