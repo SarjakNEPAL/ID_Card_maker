@@ -46,4 +46,3 @@ def start(a):
     k1.place(x=23,y=5)
     app.mainloop()
 
-start('sarjak')
