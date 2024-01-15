@@ -1,16 +1,18 @@
 from condata import *
 from tkinter import *
 
-
+global con
+con=""
 def start(a):
+    global con 
     app=Tk()
     def ext():
         app.destroy()
 
     def lgout():
         ext()
-        import scene1
-        scene1.render(True)
+        global con
+        con='Logout'
            
     global data 
     data=a
@@ -45,4 +47,5 @@ def start(a):
     k1=Label(frame23,text="DASHBOARD",bg="#BFC9CA",font=("Small Font",25))
     k1.place(x=23,y=5)
     app.mainloop()
-
+    print(con)
+    return con

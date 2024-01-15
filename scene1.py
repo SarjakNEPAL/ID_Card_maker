@@ -9,13 +9,14 @@ global app
 app=tk.Tk()
 
 
-
-
+global username
+global password
 
 def render(kkggv):
     global isok, app, username
     isok=False
     if kkggv == True:
+        app=Tk()
         app.title("ID generator")
         app.iconbitmap("assets/main.ico") 
         app.geometry("1000x500")
@@ -37,7 +38,8 @@ def render(kkggv):
             global isok
             isok=False
             a=dataget()
-            if a[0]==p and p!=None:
+            cursor.execute('SELECT username FROM users WHERE username=?',[username])
+            if a is not None and p != '' and a[0] == p:
                 print(a)
                 isok=True
                 app.destroy()
@@ -103,13 +105,12 @@ def render(kkggv):
 
         def checkfld():
             global username
+            global password
             username=user1.get()
             password=pass1.get()
             if username !='':
                 if password!='' and len(password)>7:
-                    cursor.execute('SELECT password FROM users WHERE username=?',[username])
-                    if cursor.fetchone() is not None: lgmn(username,password)
-                    else:messagebox.showerror("CREDENTIAL ERROR","Username or Password error")
+                    lgmn(username,password)
                 else:
                     messagebox.showwarning("Password error","Password must contain more than 7 characters")
             else:
