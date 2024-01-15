@@ -31,8 +31,13 @@ def password(u):
                         newpass.delete(0,END)
             else:
                     messagebox.showwarning("Warning!","Old Password And New Password Cannot be same")
+
+                    cnewpass.delete(0,END)
+                    newpass.delete(0,END)
+                    oldpass.delete(0,END)
         else:
             messagebox.showwarning("Warning!","All Fields must be filled")
+        root.deiconify()
     
     def kensil():
         root.destroy()
