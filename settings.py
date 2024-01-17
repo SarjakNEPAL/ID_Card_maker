@@ -91,12 +91,102 @@ def render(username,function):
      
 
 def adddata(u):
-     return True
+    root=Tk()
+    root.geometry('800x800')
+    root.resizable(False,False)
+    root.title('Data add')
+    root.iconbitmap("assets/main.ico")  
+    main=Frame(root,width=800, height=800)
+    main.config(bg="#5585b5")
+    main.place(x=0,y=0)
+
+    #Title
+    Title_Frame=Frame(main,height=60,width=750,bg="#bbe4e9")
+    Title_Frame.place(relx=0.5,rely=0.05,anchor="center")
+    Title_Txt=Label(Title_Frame,text="Create ID card- Please Fill the Details",font=(('Helvetica', 30)),bg="#bbe4e9")
+    Title_Txt.place(relx=0.5,rely=0.5,anchor="center")
+
+    #Form
+    Form_Frame=Frame(main,height=600,width=750,bg="#bbe4e9")
+    #Form-Labels
+    Form_Frame.place(relx=0.5,rely=0.5,anchor="center")
+    Form_Txt0=Label(Form_Frame,text="the fields marked with * are mandatory to fill",font=(('Helvetica',20)),fg="orange",bg="#515A5A")
+    Form_Txt0.place(relx=0.5,rely=0.05,anchor="center")
+    Form_Txt=Label(Form_Frame,text="* Full Name:",font=(('Helvetica', 25)),bg="#839192")
+    Form_Txt.place(relx=0.15,rely=0.22,anchor="center")
+    Form_Txt1=Label(Form_Frame,text="* Gender:",font=(('Helvetica', 25)),bg="#839192")
+    Form_Txt1.place(relx=0.13,rely=0.33,anchor="center")
+    Form_Txt2=Label(Form_Frame,text="* Phone Number:",font=(('Helvetica', 25)),bg="#839192")
+    Form_Txt2.place(relx=0.205,rely=0.44,anchor="center")
+    Form_Txt3=Label(Form_Frame,text="* Address:",font=(('Helvetica', 25)),bg="#839192")
+    Form_Txt3.place(relx=0.145,rely=0.55,anchor="center")
+    Form_Txt4=Label(Form_Frame,text="Company name/Title:",font=(('Helvetica', 25)),bg="#839192")
+    Form_Txt4.place(relx=0.25,rely=0.66,anchor="center")
+    Form_Txt5=Label(Form_Frame,text="Profile Picture: \n (If empty, Profile \naccording to gender)",font=(('Helvetica', 25)),bg="white")
+    Form_Txt5.place(relx=0.25,rely=0.85,anchor="center")
+    k22=Label(Form_Frame,text="Selected image =None",font=('Helvetica',8))
+    k22.place(relx=0.7,rely=0.77,anchor="center")
+
+    #Form-Entries
+    FName=Entry(Form_Frame,width=25,font=('Helvetica',25))
+    FName.place(relx=0.3,rely=0.185)
+    phone=Entry(Form_Frame,width=20,font=('Helvetica',25))
+    phone.place(relx=0.4,rely=0.405)
+    address=Entry(Form_Frame,width=25,font=('Helvetica',25))
+    address.place(relx=0.27,rely=0.515)
+    Title_=Entry(Form_Frame,width=20,font=('Helvetica',25))
+    Title_.place(relx=0.48,rely=0.627)
+
+    #Form-Gender selector
+    Checkbutton1 = IntVar()   
+    Checkbutton2 = IntVar()   
+    Checkbutton3 = IntVar()
+    Button1 = Checkbutton(Form_Frame, text = "Male",  
+                        variable = Checkbutton1, 
+                        onvalue = 1, 
+                        offvalue = 0, 
+                        height = 2, 
+                        width = 10) 
+    
+    Button2 = Checkbutton(Form_Frame, text = "Female", 
+                        variable = Checkbutton2, 
+                        onvalue = 1, 
+                        offvalue = 0, 
+                        height = 2, 
+                        width = 10) 
+    
+    Button3 = Checkbutton(Form_Frame, text = "Others", 
+                        variable = Checkbutton3, 
+                        onvalue = 1, 
+                        offvalue = 0, 
+                        height = 2, 
+                        width = 10)   
+        
+    Button1.place(relx=0.33,rely=0.33,anchor="center")   
+    Button2.place(relx=0.53,rely=0.33,anchor="center")   
+    Button3.place(relx=0.73,rely=0.33,anchor="center")
+
+
+    
+    select_img= Button(Form_Frame,text="Select Image",font=('Helvetica',20))
+    select_img.place(relx=0.6,rely=0.9,anchor="center")
+
+    #buttons
+    intrx_Frame=Frame(main,height=70,width=750,bg="#bbe4e9")
+
+    intrx_Frame.place(relx=0.5,rely=0.94,anchor="center")
+    intrx_ext=Button(intrx_Frame,text="Exit",font=(('Helvetica', 23)),width=19,bg="GREY",command=lambda: root.destroy())
+    intrx_ext.place(relx=0.75,rely=0.5,anchor="center")
+    intrx_sbt=Button(intrx_Frame,text="Submit",font=(('Helvetica', 23)),width=20,bg="GREY")
+    intrx_sbt.place(relx=0.26,rely=0.5,anchor="center")
+    root.mainloop()
+    return True
+
      
 
 
 
 if __name__=='__main__':
-    render("Sarjak","rpass")
+    adddata("Sarjak")
 
 

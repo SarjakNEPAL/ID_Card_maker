@@ -80,8 +80,7 @@ def start(a):
             messagebox.showerror("Error","data already exists")
         else:
             app2.withdraw()
-            print(settings.adddata(a))
-            app2.deiconify()
+            if (settings.adddata(a)):app2.deiconify
 
     if(dataexist(a)):
         template_path = "assets/template1.png"
