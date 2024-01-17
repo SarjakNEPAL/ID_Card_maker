@@ -1,5 +1,7 @@
 from condata import *
 from tkinter import *
+from tkinter import messagebox
+from PIL import Image,ImageTk
 import settings
 
 
@@ -45,9 +47,13 @@ def start(a):
     frame22.place(x=10,y=130)
     frame23=Frame(frame2, height="50",width="280",bg="#BFC9CA")
     frame23.place(x=10,y=10)
+    frame24=Frame(main, height=460,width=660,bg="#BFC9CA")
+    frame24.place(x=320,y=20)
 
     def setti():
         settings.render(a,"rpass")
+
+    
     #buttons
     b=Button(frame2,text="Exit",height=4, width=40,bg="#BFC9CA",command=ext)
     b.place(x=5,y=400)
@@ -60,8 +66,41 @@ def start(a):
     k.place(x=1,y=1)
     k1=Label(frame23,text="DASHBOARD",bg="#BFC9CA",font=("Small Font",25))
     k1.place(x=23,y=5)
+
+# Load the image from the provided path
+    
+    def dataexist(a):
+        cursor.execute('SELECT username FROM user_info where username=?',[a])
+        d=cursor.fetchone()
+        if d!=None: return True
+        else:False
+    
+    def datasend(a):
+        if dataexist(a):
+            messagebox.showerror("Error","data already exists")
+        else:
+            app2.withdraw()
+            print(settings.adddata(a))
+            app2.deiconify()
+
+    if(dataexist(a)):
+        template_path = "assets/template1.png"
+        img = Image.open(template_path)
+        tempimg = ImageTk.PhotoImage(img.resize((660, 460)))
+
+        # Display the image in a label within the MainFrame
+        template_label =Label(frame24, image=tempimg)
+        template_label.pack(expand=True, fill='both', anchor='center')
+    else:
+        bu=Button(frame24,text="Create",command=lambda:datasend(a))
+        bu.place(relx=0.5,rely=0.5,anchor="center")
+
+
+
     app2.mainloop()
+
     return con
+
 
 if __name__ == "__main__":
     start('sar')

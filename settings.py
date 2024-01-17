@@ -83,11 +83,16 @@ def password(u):
     
 
 def render(username,function):
+    
+    
+
      if function=="rpass":
           password(username)
      
 
-
+def adddata(u):
+     return True
+     
 
 
 
