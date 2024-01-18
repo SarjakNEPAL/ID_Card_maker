@@ -67,7 +67,7 @@ def start(a):
     k1=Label(frame23,text="DASHBOARD",bg="#BFC9CA",font=("Small Font",25))
     k1.place(x=23,y=5)
 
-# Load the image from the provided path
+    # Load the image from the provided path
     
     def dataexist(a):
         cursor.execute('SELECT username FROM user_info where username=?',[a])
@@ -79,8 +79,10 @@ def start(a):
         if dataexist(a):
             messagebox.showerror("Error","data already exists")
         else:
-            app2.withdraw()
-            if (settings.adddata(a)):app2.deiconify
+            app2.destroy()
+            if (settings.adddata(a))==a:
+                print("aayo")
+                start(a)
 
     if(dataexist(a)):
         template_path = "assets/template1.png"
@@ -93,9 +95,6 @@ def start(a):
     else:
         bu=Button(frame24,text="Create",command=lambda:datasend(a))
         bu.place(relx=0.5,rely=0.5,anchor="center")
-
-
-
     app2.mainloop()
 
     return con

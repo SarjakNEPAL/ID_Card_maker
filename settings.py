@@ -1,7 +1,7 @@
 from tkinter import *
 from condata import *
 from tkinter import messagebox
-
+from scene2 import *
 
 def password(u):
     global username
@@ -91,12 +91,13 @@ def render(username,function):
      
 
 def adddata(u):
-    root=Tk()
-    root.geometry('800x800')
-    root.resizable(False,False)
-    root.title('Data add')
-    root.iconbitmap("assets/main.ico")  
-    main=Frame(root,width=800, height=800)
+    global root
+    root2=Tk()
+    root2.geometry('800x800')
+    root2.resizable(False,False)
+    root2.title('Data add')
+    root2.iconbitmap("assets/main.ico")  
+    main=Frame(root2,width=800, height=800)
     main.config(bg="#5585b5")
     main.place(x=0,y=0)
 
@@ -173,20 +174,17 @@ def adddata(u):
 
     #buttons
     intrx_Frame=Frame(main,height=70,width=750,bg="#bbe4e9")
-
     intrx_Frame.place(relx=0.5,rely=0.94,anchor="center")
-    intrx_ext=Button(intrx_Frame,text="Exit",font=(('Helvetica', 23)),width=19,bg="GREY",command=lambda: root.destroy())
+    def bhak():
+        root2.destroy()
+        return u
+    intrx_ext=Button(intrx_Frame,text="Exit",font=(('Helvetica', 23)),width=19,bg="GREY",command=bhak)
     intrx_ext.place(relx=0.75,rely=0.5,anchor="center")
     intrx_sbt=Button(intrx_Frame,text="Submit",font=(('Helvetica', 23)),width=20,bg="GREY")
     intrx_sbt.place(relx=0.26,rely=0.5,anchor="center")
-    root.mainloop()
-    return True
+    root2.mainloop()
+    print("baira gao")
+    return u
 
      
-
-
-
-if __name__=='__main__':
-    adddata("Sarjak")
-
 
