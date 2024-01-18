@@ -14,7 +14,7 @@ cursor.execute('''
                 username TEXT NOT NULL,
                 Fname TEXT,
                 gender TEXT NOT NULL,
-                phone INTEGER NOT NULL UNIQUE,
+                phone INTEGER NOT NULL,
                 address TEXT,
                 company TEXT
             )      

@@ -2,6 +2,7 @@ from tkinter import *
 from condata import *
 from tkinter import messagebox
 from scene2 import *
+from maker import *
 
 def password(u):
     global username
@@ -88,7 +89,22 @@ def render(username,function):
 
      if function=="rpass":
           password(username)
-     
+
+def submit(u):
+    global FName,phone,address,Title_,Checkbutton1,Checkbutton2,Checkbutton3 
+    print (Checkbutton1)
+    def gendergrab():
+        if (Checkbutton1.get())==1 and ((Checkbutton2.get()!=1) and Checkbutton3.get()!=1):
+            gender="M"
+        elif Checkbutton2.get()==1 and (Checkbutton1.get()!=1 and Checkbutton3.get()!=1):
+            gender="F"
+        elif Checkbutton3.get()==1 and (Checkbutton1.get()!=1 and Checkbutton2.get()!=1):
+            gender="O"
+        else:
+            gender="EROOR"
+        return gender
+    hal(u,FName.get(),gendergrab(),phone.get(),address.get(),Title_.get(),1)
+        
 
 def adddata(u):
     global root
@@ -127,7 +143,9 @@ def adddata(u):
     Form_Txt5.place(relx=0.25,rely=0.85,anchor="center")
     k22=Label(Form_Frame,text="Selected image =None",font=('Helvetica',8))
     k22.place(relx=0.7,rely=0.77,anchor="center")
-
+    
+    
+    global FName,phone,address,Title_,Checkbutton1,Checkbutton2,Checkbutton3 
     #Form-Entries
     FName=Entry(Form_Frame,width=25,font=('Helvetica',25))
     FName.place(relx=0.3,rely=0.185)
@@ -144,22 +162,16 @@ def adddata(u):
     Checkbutton3 = IntVar()
     Button1 = Checkbutton(Form_Frame, text = "Male",  
                         variable = Checkbutton1, 
-                        onvalue = 1, 
-                        offvalue = 0, 
                         height = 2, 
                         width = 10) 
     
     Button2 = Checkbutton(Form_Frame, text = "Female", 
                         variable = Checkbutton2, 
-                        onvalue = 1, 
-                        offvalue = 0, 
                         height = 2, 
                         width = 10) 
     
     Button3 = Checkbutton(Form_Frame, text = "Others", 
                         variable = Checkbutton3, 
-                        onvalue = 1, 
-                        offvalue = 0, 
                         height = 2, 
                         width = 10)   
         
@@ -178,9 +190,9 @@ def adddata(u):
     def bhak():
         root2.destroy()
         return u
-    intrx_ext=Button(intrx_Frame,text="Exit",font=(('Helvetica', 23)),width=19,bg="GREY",command=bhak)
+    intrx_ext=Button(intrx_Frame,text="Cancel",font=(('Helvetica', 23)),width=19,bg="GREY",command=bhak)
     intrx_ext.place(relx=0.75,rely=0.5,anchor="center")
-    intrx_sbt=Button(intrx_Frame,text="Submit",font=(('Helvetica', 23)),width=20,bg="GREY")
+    intrx_sbt=Button(intrx_Frame,text="Submit",font=(('Helvetica', 23)),width=20,bg="GREY",command=lambda: submit(u))
     intrx_sbt.place(relx=0.26,rely=0.5,anchor="center")
     root2.mainloop()
     print("baira gao")
