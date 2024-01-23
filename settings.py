@@ -107,7 +107,6 @@ def submit(u):
         
 
 def adddata(u):
-    global root
     root2=Tk()
     root2.geometry('800x800')
     root2.resizable(False,False)
