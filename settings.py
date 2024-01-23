@@ -104,6 +104,7 @@ def submit(u):
             gender="EROOR"
         return gender
     hal(u,FName.get(),gendergrab(),phone.get(),address.get(),Title_.get(),1)
+
         
 
 def adddata(u):
@@ -189,12 +190,15 @@ def adddata(u):
     def bhak():
         root2.destroy()
         return u
+    
+    def commit(u):
+        submit(u)
+        root2.destroy()
     intrx_ext=Button(intrx_Frame,text="Cancel",font=(('Helvetica', 23)),width=19,bg="GREY",command=bhak)
     intrx_ext.place(relx=0.75,rely=0.5,anchor="center")
-    intrx_sbt=Button(intrx_Frame,text="Submit",font=(('Helvetica', 23)),width=20,bg="GREY",command=lambda: submit(u))
+    intrx_sbt=Button(intrx_Frame,text="Submit",font=(('Helvetica', 23)),width=20,bg="GREY",command=lambda: commit(u))
     intrx_sbt.place(relx=0.26,rely=0.5,anchor="center")
     root2.mainloop()
-    print("baira gao")
     return u
 
      
