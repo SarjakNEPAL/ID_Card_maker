@@ -90,23 +90,23 @@ def render(username,function):
      if function=="rpass":
           password(username)
 
-def submit(u):
-    global FName,phone,address,Title_,Checkbutton1,Checkbutton2,Checkbutton3 
-    print (Checkbutton1)
-    def gendergrab():
-        if (Checkbutton1.get())==1 and ((Checkbutton2.get()!=1) and Checkbutton3.get()!=1):
-            gender="M"
-        elif Checkbutton2.get()==1 and (Checkbutton1.get()!=1 and Checkbutton3.get()!=1):
-            gender="F"
-        elif Checkbutton3.get()==1 and (Checkbutton1.get()!=1 and Checkbutton2.get()!=1):
-            gender="O"
-        else:
-            gender="EROOR"
-        return gender
-    hal(u,FName.get(),gendergrab(),phone.get(),address.get(),Title_.get(),1)
-        
+
+global FName,phone,address,Title_,Checkbutton1,Checkbutton2,Checkbutton3         
 
 def adddata(u):
+    def submit(u):
+        def gendergrab():
+            if (Checkbutton1.get())==1:
+                gender="M"
+            elif Checkbutton1.get()==2:
+                gender="F"
+            elif Checkbutton1.get()==3:
+                gender="O"
+            else:
+                gender="EROOR"
+            return gender
+        hal(u,FName.get(),gendergrab(),phone.get(),address.get(),Title_.get(),1)
+        root2.destroy()
     global root
     root2=Tk()
     root2.geometry('800x800')
@@ -158,20 +158,21 @@ def adddata(u):
 
     #Form-Gender selector
     Checkbutton1 = IntVar()   
-    Checkbutton2 = IntVar()   
-    Checkbutton3 = IntVar()
-    Button1 = Checkbutton(Form_Frame, text = "Male",  
+    Button1 = Radiobutton(Form_Frame, text = "Male",  
                         variable = Checkbutton1, 
+                        value=1,
                         height = 2, 
                         width = 10) 
     
-    Button2 = Checkbutton(Form_Frame, text = "Female", 
-                        variable = Checkbutton2, 
+    Button2 = Radiobutton(Form_Frame, text = "Female", 
+                        variable = Checkbutton1, 
+                        value=2,
                         height = 2, 
                         width = 10) 
     
-    Button3 = Checkbutton(Form_Frame, text = "Others", 
-                        variable = Checkbutton3, 
+    Button3 = Radiobutton(Form_Frame, text = "Others", 
+                        variable = Checkbutton1, 
+                        value=3,
                         height = 2, 
                         width = 10)   
         

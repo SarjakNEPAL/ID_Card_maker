@@ -12,8 +12,9 @@ global app2
 
 
 con=""
-def start(a):
 
+
+def start(a):
     global con 
     global app2
     app2=Tk()
@@ -88,7 +89,8 @@ def start(a):
         template_path = "assets/template1.png"
         img = Image.open(template_path)
         tempimg = ImageTk.PhotoImage(img.resize((660, 460)))
-
+        Fullname=Label(frame24,text="Sample text1",font=('Sans',20))
+        Fullname.place(x=50,y=50)
         # Display the image in a label within the MainFrame
         template_label =Label(frame24, image=tempimg)
         template_label.pack(expand=True, fill='both', anchor='center')
@@ -101,4 +103,4 @@ def start(a):
 
 
 if __name__ == "__main__":
-    start('sar')
+    start('Sarjak')

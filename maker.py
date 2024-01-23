@@ -16,8 +16,8 @@ def fetchgar(a):
 
 def hal(u,Fname,Gender,Phone,Address,Company,Picture):
     if Fname!="" or Gender !="" or Phone!="" or Address!="":
-        # cursor.execute("INSERT INTO user_info VALUES(?,?,?,?,?,?)",[u,Fname,Gender,Phone,Address,Company])
-        # link.commit()
+        cursor.execute("INSERT INTO user_info VALUES(?,?,?,?,?,?)",[u,Fname,Gender,Phone,Address,Company])
+        link.commit()
         print(u,Fname,Gender,Phone)
         messagebox.showinfo("Datasaved","Your card will be made shortly")
     else:

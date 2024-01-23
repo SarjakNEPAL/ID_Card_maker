@@ -127,12 +127,27 @@ def render(kkggv):
             Bttn.config(text="Register", command=signup)
             Bttn2.config(text="Login",command=lg)
 
+        global i
+        i=0
+        def shpw():
+            global i
+        
+            # global bttn3
+            if i%2!=0:
+                bttn3.config(bg="Green")
+                pass1.config(show="*")
+            else:
+                bttn3.config(bg="Red")
+                pass1.config(show="")
+            i=i+1
+            
         #Default entries
         crtr=Label(creator,text="|||| Created By - Sarjak Bhandari ||||",font=('Helvetica', 20),bg="#bbe4e9")
         usrnmr_=Label(Mfrm,text="Username:",font=('Helvetica', 25),bg="#53a8b6")
         pss_=Label(Mfrm,text="Password:",font=('Helvetica', 25),bg="#53a8b6")
         Bttn=Button(Mfrm,text="Login",bg="#ececec",height=1,width=10,font=('Helvetica', 20),command=checkfld)
         Bttn2=Button(Mfrm,text="Register",bg="#ececec",height=1,width=10,font=('Helvetica', 20),command=reg)
+        bttn3=Button(main,text=" ",bg="Green",height=1,width=1,command=lambda: shpw())
         Button(main,text="Exit",command=ext,font=('Helvetica', 20),bg="#bbe4e9",width=30,height=1).place(x=455,y=380)
         #inputs
         user1=Entry(Mfrm,font=('Helvetica', 20))
@@ -140,16 +155,20 @@ def render(kkggv):
         crtr.place(x=40,y=5)
         usrnmr_.place(x=20,y=10)
         pss_.place(x=20,y=70)
+        bttn3.place(x=930,y=250)
         Bttn.place(x=50,y=130)
         Bttn2.place(x=250,y=130)
         user1.place(x=185,y=15)
         pass1.place(x=185,y=75)
-        #login function
         app.mainloop()
     elif isok==False or kkggv==False:
         app=Tk()
         app.destroy()
     return isok
+
+if __name__=="__main__":
+    render(True)
+
 
 def getuname():
     return username
