@@ -1,17 +1,16 @@
 from condata import *
 from tkinter import messagebox
 
-def fetchgar(a):
-    data={"FullName":"","gender":"","phone":0,"address":"","company":""}
-    cursor.execute("SELECT Fname,gender,phone,address,company FROM user_info WHERE username=?",[a])
-    a=cursor.fetchone()
+def fetchgar(g):
+    data=[]
+    cursor.execute("SELECT Fname,gender,phone,address,company FROM user_info WHERE username=?",[g])
+    a=(cursor.fetchone()) 
     if a!=None:
-        data["Fullname"]:a[0]
-        data["Gender"]:a[1]
-        data["phone"]:a[2]
-        data["address"]:a[3]
-        data["company"]:a[4]
-        print(data)
+        data.append(a[0])
+        data.append(a[1])
+        data.append(a[2])
+        data.append(a[3])
+        data.append(a[4])
         return data
 
 def hal(u,Fname,Gender,Phone,Address,Company,Picture):
@@ -24,5 +23,5 @@ def hal(u,Fname,Gender,Phone,Address,Company,Picture):
         messagebox.showwarning("Warning","Please fill all the fields")
 
 
-
-    
+if __name__=="__main__":
+    print(fetchgar('Sarjak'))

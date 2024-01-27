@@ -84,8 +84,10 @@ def start(a):
             if (settings.adddata(a))==a:
                 print("aayo")
                 start(a)
+    
 
     if(dataexist(a)):
+        import maker
         template_path = "assets/template1.png"
         img = Image.open(template_path)
         tempimg = ImageTk.PhotoImage(img.resize((660, 460)))
@@ -94,6 +96,31 @@ def start(a):
         # Display the image in a label within the MainFrame
         template_label =Label(frame24, image=tempimg)
         template_label.pack(expand=True, fill='both', anchor='center')
+
+        #adding info in the canvas
+        datas= maker.fetchgar(a)
+        print(datas)
+        #Labels
+        Fullname=Label(frame24, text=f"{datas[0]}",font=("Sans",20),bg="White")
+        Fullname.place(x=355,y=150)
+        if datas[1]=="M":
+            Gender=Label(frame24, text="Gender: Male",font=("Sans",20),bg="White")    
+        elif datas[1]=="F":
+            Gender=Label(frame24, text="Gender: Female",font=("Sans",20),bg="white")     
+        else:
+            Gender=Label(frame24, text="Gender: LGBTQ+",font=("Sans",20),bg="White")
+        Gender.place(x=255,y=260)      
+        num=Label(frame24, text=f"{datas[2]}",font=("Sans",20),bg="White")  
+        num.place(x=360,y=225)
+        address=Label(frame24, text=f"{datas[3]}",font=("Sans",20),bg="White")  
+        address.place(x=378,y=185)
+        company=Label(frame24, text=f"{datas[4]}",font=("Terminal",25),bg="Orange") 
+        company.place(relx=0.5,rely=0.25,anchor="center")
+
+
+
+
+
     else:
         bu=Button(frame24,text="Create",command=lambda:datasend(a))
         bu.place(relx=0.5,rely=0.5,anchor="center")
