@@ -26,3 +26,5 @@ cursor.execute('''
                 Image BLOB
             );
 ''')
+
+
