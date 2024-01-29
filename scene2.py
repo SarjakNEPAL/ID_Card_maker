@@ -83,7 +83,6 @@ def start(a):
         else:
             app2.destroy()
             if (settings.adddata(a))==a:
-                print("aayo")
                 start(a)
     
 
@@ -124,19 +123,18 @@ def start(a):
 
         if maker.chapic(a):
             cursor.execute('''SELECT Image FROM user_img where username=?''',[a])
-            d=cursor.fetchone()[0]
+            d=cursor.fetchone()
             dato=io.BytesIO(d)
             image=Image.open(dato)
         else: 
             if datas[1]=='M':
                 loca='assets/man.png'
                 pfp_frame.config(bg="#D1D1D3")
-            elif data[1]=="F":
+            elif datas[1]=="F":
                 loca='assets/woman.png'
                 pfp_frame.config(bg="#4C5AA5")
             else:
-                loca='assets/lgbtq.png'
-                pfp_frame.config(bg="#4C5AA5")
+                loca='assets/lgbt.png'
             image=Image.open(loca)
         pfp_pic=ImageTk.PhotoImage(image.resize((150,150)))
         pfp_Label=Label(pfp_frame,image=pfp_pic)

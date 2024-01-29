@@ -37,7 +37,6 @@ def render(kkggv):
             a=dataget()
             cursor.execute('SELECT username FROM users WHERE username=?',[username])
             if a is not None and p != '' and a[0] == p:
-                print(a)
                 isok=True
                 app.destroy()
             else:
@@ -48,7 +47,6 @@ def render(kkggv):
         def signup():
             username=user1.get()
             password=pass1.get()
-            print(username,password)
             if username !='':
                 if password!='' and len(password)>7:
                     cursor.execute('SELECT username FROM users WHERE username=?',[username])

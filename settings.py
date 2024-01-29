@@ -4,6 +4,8 @@ from tkinter import messagebox
 from scene2 import *
 from maker import *
 
+global piccha
+piccha=False
 global Files 
 def password(u):
     global username
@@ -95,8 +97,11 @@ def render(username,function):
 global FName,phone,address,Title_,Checkbutton1,Checkbutton2,Checkbutton3         
 
 def adddata(u):
+    global piccha
     def submit(u):
+        global piccha
         def gendergrab():
+            global piccha
             if (Checkbutton1.get())==1:
                 gender="M"
             elif Checkbutton1.get()==2:
@@ -107,7 +112,7 @@ def adddata(u):
                 gender="EROOR"
             return gender
         hal(u,FName.get(),gendergrab(),phone.get(),address.get(),Title_.get(),1)
-        insert_image(u)
+        if piccha==True:insert_image(u)
         root2.destroy()
     global root
     root2=Tk()
@@ -184,8 +189,9 @@ def adddata(u):
 
     def imager(u):
         saveimage(u)
-        global Files
+        global Files,piccha
         k22.config(text=f"Selected File= {getfilelocation()}")
+        piccha=True
 
     select_img= Button(Form_Frame,text="Select Image",font=('Helvetica',20),command=lambda:imager(u))
     select_img.place(relx=0.6,rely=0.9,anchor="center")
