@@ -11,8 +11,6 @@
 <li>Ability to store Pictures</li>
 <li>Database to hold record</li>
 <li>generates the id card automatically after user registration and login</li>
-<li>Option to change details</li>
-<li>hashed details</li>
 </ol>
 
 <h1>Language used:</h1>
